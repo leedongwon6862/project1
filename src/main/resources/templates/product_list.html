@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 리스트</title>
+</head>
+<body>
+
+
+<!--HTML에서 <a> 태그는 인라인 요소이고 <ul> 및 <li> 태그는 블록 요소이기 때문에 <ul> 내부에 <a> 태그를 넣는 것이 문법적으로 올바릅니다.-->
+
+<ul>
+    <li th:each= "product : ${productList}">
+        <a th:href="@{/product/{id}(id=${product.id})}">
+        <span th:text="${product.name}"></span>
+        <span th:text="${product.price}"></span>
+        </a>
+    </li>
+</ul>
+<div><a href="/product/create">상품추가</a></div>
+<div><a href="/product/delete">상품삭제</a></div>
+
+
+<ul>
+    <li th:each="category : ${categoryList}">
+        <a th:href="@{/category/{id}(id=${category.id})}">
+    <span th:text="${category.name}"></span>
+        </a>
+    </li>
+</ul>
+
+
+
+</body>
+</html>

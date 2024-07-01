@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 추가</title>
+</head>
+<body>
+<h2>상품 추가</h2>
+<form action="/product/create" method="post">
+    <label for="name">상품 이름:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="price">상품 가격:</label><br>
+    <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+    <label for="description">상품 설명:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+    <label for="category">카테고리:</label><br>
+    <select id="category" name="category" required>
+        <option value="" disabled selected>카테고리를 선택하세요</option>
+        <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select><br><br>
+
+    <input type="submit" value="상품 추가">
+</form>
+</body>
+</html>
